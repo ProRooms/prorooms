@@ -1,6 +1,7 @@
 package com.sanvalero.proweek.domain;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 /**
  * Action class creates a template for the possible transactions that can be made by a customer: purchase, rental, or
@@ -10,13 +11,13 @@ public class Action {
     
     //declare instance variables
     private int id;
-    private LocalDateTime startDate;
+    private LocalDate startDate;
     private int propertyId;
     private int userId;
 
     //constructor
 
-    public Action(int id, LocalDateTime startDate, int propertyId, int userId) {
+    public Action(int id, LocalDate startDate, int propertyId, int userId) {
         this.id = id;
         this.startDate = startDate;
         this.propertyId = propertyId;
@@ -33,11 +34,11 @@ public class Action {
         this.id = id;
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 

@@ -1,19 +1,21 @@
 package com.sanvalero.proweek.dao;
 
-
 import com.sanvalero.proweek.domain.Rental;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import java.sql.Date;
+
 public class RentalDAO {
 
     private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private final String URL_CONEXION = "jdbc:mysql://localhost:3306/proweek";
-    private final String USUARIO = "ProWeek";
-    private final String CONTRASENA = "1234";
+    private final String URL_CONNECTION = "jdbc:mysql://localhost:3306/proweek";
+    private final String USER = "ProWeek";
+    private final String PASSWORD = "1234";
     
     private Connection connection;
     
@@ -22,22 +24,19 @@ public class RentalDAO {
     }
     
     /**
-     * Conecta con la base de datos
+     * Connect to the data base.
      */
     public void connect() {
         try {
             Class.forName(DRIVER);
-            connection = DriverManager.getConnection(URL_CONEXION, USUARIO, CONTRASENA);
-            System.out.println("conectado");
-        } catch (ClassNotFoundException cnfe) {
+            connection = DriverManager.getConnection(URL_CONNECTION, USER, PASSWORD);
+        } catch (ClassNotFoundException | SQLException cnfe) {
             cnfe.printStackTrace();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
         }
     }
     
     /**
-     * Desconecta de la base de datos
+     * Disconnect from the database.
      */
     public void disconnect() {
         try {
@@ -46,24 +45,26 @@ public class RentalDAO {
             sqle.printStackTrace();
         }
     }
-    
+ 
     /**
-     * Añade una pelicula a la base de datos
-     * @param movie La pelicula con la información que se quiere registrar
-     * @throws SQLException 
+     * Add a rented property to the database.
+     * @param rental
+     * @throws SQLException
      */
-    public void addAlquilan(Rental rental) throws SQLException {
-        String sql = "INSERT INTO alquilan (ID_ALQUILER, FECHA_INICIO, FECHA_FIN, ID_CASA, ID_USUARIO) " +
-                "VALUES (?, ?, ?, ?, ?)";
-        
-        PreparedStatement sentencia = connection.prepareStatement(sql);
-        sentencia.setInt(1, rental.getId_alquiler());
-        sentencia.setString(2, rental.getFecha_inicio());
-        sentencia.setString(3, rental.getFecha_fin());
-        sentencia.setInt(4, rental.getId_casa());
-        sentencia.setInt(5, rental.getId_usuario());
-        sentencia.executeUpdate();
+    public void addRental(Rental rental) throws SQLException {
+        String sql = "INSERT INTO ALQUILAN (id_alquiler, fecha_inicio, fecha_fin,"
+                + " id_casa, id_usuario) VALUES (?, ?, ?, ?, ?)";
+
+        PreparedStatement query = connection.prepareStatement(sql);
+
+        query.setInt(1, rental.getId());
+        query.setDate(2, Date.valueOf(rental.getStartDate()));
+        query.setDate(3, Date.valueOf(rental.getEndDate()));
+        query.setInt(4, rental.getPropertyId());
+        query.setInt(5, rental.getUserId());
+        query.executeUpdate();
     }
+    
     /***TODO************************************************************************************************************/
     /**
      * Obtiene la lista de peliculas de la base de datos

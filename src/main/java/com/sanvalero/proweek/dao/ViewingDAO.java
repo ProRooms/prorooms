@@ -1,25 +1,28 @@
 package com.sanvalero.proweek.dao;
 
-import com.sanvalero.proweek.domain.Purchase;
-
+import com.sanvalero.proweek.domain.Viewing;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import java.sql.Date;
+import java.sql.Time;
 
-public class PurchaseDAO {
-
+/**
+ * Viewing DAO establishes connection to the table VISITAN in the database.
+ */
+public class ViewingDAO {
+    
+    //declare instance variables
     private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private final String URL_CONNECTION = "jdbc:mysql://localhost:3306/proweek";
+    private final String URL_CONNECTION = "jdbc:oracle:thin:@//localhost:1521/XE";
     private final String USER = "ProWeek";
     private final String PASSWORD = "1234";
     
     private Connection connection;
     
-    public PurchaseDAO() { connect(); }
-    
+    public ViewingDAO() { connect();}    
     
     /**
      * Connect to the data base.
@@ -32,7 +35,7 @@ public class PurchaseDAO {
             cnfe.printStackTrace();
         }
     }
-    
+
     /**
      * Disconnect from the database.
      */
@@ -43,17 +46,24 @@ public class PurchaseDAO {
             sqle.printStackTrace();
         }
     }
-    
-    public void addPurchase(Purchase purchase) throws SQLException {
-        String sql = "INSERT INTO COMPRAN (id_compra, fecha_inicio, id_casa, id_usuario) " +
+
+    /**
+     * Add the details of a viewing to the database.
+     * @param viewing
+     * @throws SQLException
+     */
+    public void addViewing(Viewing viewing) throws SQLException {
+        String sql = "INSERT INTO VISITAN (id_VISTA, fecha, hora, id_casa, id_usuario) " +
                 "VALUES (?, ?, ?, ?)";
 
         PreparedStatement query = connection.prepareStatement(sql);
 
-            query.setInt(1, purchase.getId());
-            query.setDate(2, Date.valueOf(purchase.getStartDate()));
-            query.setInt(3, purchase.getPropertyId());
-            query.setInt(4, purchase.getUserId());
-            query.executeUpdate();
-    }        
+        query.setInt(1, viewing.getId());
+        query.setDate(2, Date.valueOf(viewing.getStartDate()));
+        query.setTime(3, Time.valueOf(viewing.getTime()));
+        query.setInt(3, viewing.getPropertyId());
+        query.setInt(4, viewing.getUserId());
+        query.executeUpdate();
+    }      
+
 }

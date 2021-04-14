@@ -1,14 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sanvalero.proweek.domain;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 /**
- *
- * @author bathe
+ * Viewing contains information about an appointment to view a property made by a customer.
  */
-public class Viewing {
+public class Viewing extends Action {
     
+    //declare instance variables
+    private LocalTime time;
+
+    //constructor
+
+    public Viewing(LocalTime time, int id, LocalDate startDate, int propertyId, int userId) {
+        super(id, startDate, propertyId, userId);
+        this.time = time;
+    }
+    
+    //getters and setters
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
+
 }
