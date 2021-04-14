@@ -1,6 +1,6 @@
 package com.sanvalero.proweek.domain;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * Purchase contains information about a property purchased by a customer.
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Purchase extends Action {
 
     //constructor
-    public Purchase(int id, LocalDateTime startDate, int propertyId, int userId) {
+    public Purchase(int id, LocalDate startDate, int propertyId, int userId) {
         super(id, startDate, propertyId, userId);
     }  
     

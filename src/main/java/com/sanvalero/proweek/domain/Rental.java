@@ -1,14 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sanvalero.proweek.domain;
 
+import java.time.LocalDate;
+
 /**
- *
- * @author bathe
+ * Rental contains information about a property rented by a customer.
  */
-public class Rental {
+public class Rental extends Action {
     
+    //declare instance variables
+    private LocalDate endDate;
+
+    //constructor
+
+    public Rental(LocalDate endDate, int id, LocalDate startDate, int propertyId, int userId) {
+        super(id, startDate, propertyId, userId);
+        this.endDate = endDate;
+    }
+
+    
+    //getters and setters
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    } 
 }
