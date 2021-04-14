@@ -9,6 +9,6 @@ package com.sanvalero.proweek.domain;
  *
  * @author bathe
  */
-public class Rental {
+public class Viewing {
     
 }
