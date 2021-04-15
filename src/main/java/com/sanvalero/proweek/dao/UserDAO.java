@@ -20,7 +20,7 @@ public class UserDAO {
     //declare instance variables
     private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     private final String URL_CONNECTION = "jdbc:oracle:thin:@//localhost:1521/XE";
-    private final String USER = "ProWeekHr";
+    private final String USER = "ProWeek";
     private final String PASSWORD = "1234";
     
 
@@ -57,16 +57,15 @@ public class UserDAO {
      * @throws SQLException 
      */
     public void addUser(User user) throws SQLException {
-        String sql = "INSERT INTO USUARIO (id_usuario, nombre, apellidos, email, telefono) " +
-                "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO USUARIO (NOMBRE, APELLIDOS, EMAIL, TELEFONO) " +
+                "VALUES (?, ?, ?, ?)";
 
         PreparedStatement query = connection.prepareStatement(sql);
 
-        query.setInt(1, user.getUserId());
-        query.setString(2, user.getName());
-        query.setString(3, user.getSurname());
-        query.setString(5, user.getEmail());
-        query.setString(5, user.getTelephone());
+        query.setString(1, user.getName());
+        query.setString(2, user.getSurname());
+        query.setString(3, user.getEmail());
+        query.setString(4, user.getTelephone());
         query.executeUpdate();
     }
     

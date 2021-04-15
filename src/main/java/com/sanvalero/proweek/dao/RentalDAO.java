@@ -12,7 +12,7 @@ import java.sql.Date;
 public class RentalDAO {
 
     private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private final String URL_CONNECTION = "jdbc:mysql://localhost:3306/proweek";
+    private final String URL_CONNECTION = "jdbc:oracle:thin:@//localhost:1521/XE";
     private final String USER = "ProWeek";
     private final String PASSWORD = "1234";
     

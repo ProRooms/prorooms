@@ -16,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet that registers the a new user's details to a database.
  */
-@WebServlet(name = "proweek", urlPatterns = {"/login"})
+@WebServlet(name = "login", urlPatterns = {"/login"})
 public class RegistrationServlet extends HttpServlet{
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException { 
+            throws ServletException, IOException { 
     
         String name = request.getParameter("nombre");
         String surname = request.getParameter("apellidos");
@@ -32,27 +32,20 @@ public class RegistrationServlet extends HttpServlet{
         try {
             userDAO.addUser(user);            
             PrintWriter out = response.getWriter();
-            response.sendRedirect("myform.jsp?status=ok");           
+            response.sendRedirect("login.jsp?status=ok");           
         } catch (SQLException sqle) {
-            response.sendRedirect("myform.jsp?status=error");
+            sqle.printStackTrace();
+            response.sendRedirect("login.jsp?status=error");
         }    
     }
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
             processRequest(req, resp);
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
             processRequest(req, resp);
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

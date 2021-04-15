@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class PropertyDAO {
     
-    //declare instance variables
+    //declare instance variables    private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     private final String URL_CONNECTION = "jdbc:oracle:thin:@//localhost:1521/XE";
-    private final String USER = "ProWeekHr";
+    private final String USER = "ProWeek";
     private final String PASSWORD = "1234";
     
     private Connection connection;
