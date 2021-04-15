@@ -7,9 +7,11 @@ import java.time.LocalDate;
  */
 public class Purchase extends Action {
 
-    //constructor
+    //constructor    
+    public Purchase() { }     
+    
     public Purchase(int id, LocalDate startDate, int propertyId, int userId) {
         super(id, startDate, propertyId, userId);
-    }  
-    
+    }
+   
 }

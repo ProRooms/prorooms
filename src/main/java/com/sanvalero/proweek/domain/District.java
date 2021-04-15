@@ -14,6 +14,8 @@ public class District {
     
     //constructor
 
+    public District() {}
+    
     public District(int districtId, String districtName, double distanceFromCentre, String zone) {
         this.districtId = districtId;
         this.districtName = districtName;
