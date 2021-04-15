@@ -9,6 +9,8 @@ import java.time.LocalTime;
 public class Viewing extends Action {
 
     //contsructor
+    public Viewing() {}
+    
     public Viewing(int id, LocalDate startDate, int propertyId, int userId) {
         super(id, startDate, propertyId, userId);
     }

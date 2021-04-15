@@ -1,7 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.sanvalero.proweek.servlet;
 
-import com.sanvalero.proweek.dao.PropertyDAO;
-import com.sanvalero.proweek.domain.Property;
+import com.sanvalero.proweek.dao.DistrictDAO;
+import com.sanvalero.proweek.domain.District;
 import java.io.IOException;
 import static java.lang.System.out;
 import java.sql.SQLException;
@@ -12,31 +17,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Servlet that obtains the properties listed in the database.
+ */
 @WebServlet(name = "proweek", urlPatterns = {"/search"})
-public class SearchPropertiesServlet extends HttpServlet {
+public class SearchDistricts extends HttpServlet{
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-               throws ServletException, IOException {
+            throws ServletException, IOException {
         
-        String type = request.getParameter("tipo");
-        double price = Double.parseDouble(request.getParameter("precio"));
+        String input = request.getParameter("entrada");
         
-        PropertyDAO propertyDAO = new PropertyDAO();
-       
+        
+        DistrictDAO districtDAO = new DistrictDAO();
+        
         try {
-            ArrayList<Property> properties = new ArrayList<>();
-            properties = propertyDAO.searchPropertiesPriceType(price, type);
+            ArrayList<District> districts = new ArrayList<>();
+            districts = districtDAO.searchDistricts(input);
             out.println("<ul>");
-            for (Property property : properties) {
-                out.println("<li>" + property.getType() + "</li>");
-                out.println("<li>" + property.getSize() + "</li>");
-                out.println("<li>" + property.getRooms() + "</li>");
-                out.println("<li>" + property.getBathrooms() + "</li>");
-                out.println("<li>" + property.getPrice() + "</li>");
+            for (District district : districts) {
+                out.println("<li>" + district.getDistrictName() + "</li>");
+                out.println("<li>" + district.getDistanceFromCentre() + "</li>");
+                out.println("<li>" + district.getZone() + "</li>");  
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-        }      
+        }
+        
+    
     }
     
     @Override
@@ -47,5 +55,6 @@ public class SearchPropertiesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
-    }
+    }    
+
 }

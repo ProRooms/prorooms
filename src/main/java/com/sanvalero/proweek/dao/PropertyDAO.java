@@ -72,6 +72,7 @@ public class PropertyDAO {
             property.setDirectionFacing(result.getString(9));
             property.setPrice(result.getDouble(10));
             property.setDistrictId(result.getInt(11));
+            propertiesArrList.add(property);
         }                
         return propertiesArrList;
     }
@@ -104,6 +105,7 @@ public class PropertyDAO {
             property.setDirectionFacing(result.getString(9));
             property.setPrice(result.getDouble(10));
             property.setDistrictId(result.getInt(11));
+            propertiesArrList.add(property);
         }                
         return propertiesArrList;        
     }
@@ -137,6 +139,7 @@ public class PropertyDAO {
             property.setDirectionFacing(result.getString(9));
             property.setPrice(result.getDouble(10));
             property.setDistrictId(result.getInt(11));
+            propertiesArrList.add(property);
         }                
         return propertiesArrList;        
     }
@@ -173,6 +176,7 @@ public class PropertyDAO {
             property.setDirectionFacing(result.getString(9));
             property.setPrice(result.getDouble(10));
             property.setDistrictId(result.getInt(11));
+            propertiesArrList.add(property);
         }                
         return propertiesArrList; 
     }
@@ -185,11 +189,11 @@ public class PropertyDAO {
      * @return
      * @throws SQLException 
      */
-    public ArrayList<Property> searchPropertiesPriceType(int price, String type) throws SQLException {
+    public ArrayList<Property> searchPropertiesPriceType(double price, String type) throws SQLException {
         String sql = "SELECT * FROM CASA WHERE precio >= ? AND tipo = ?";
         
         PreparedStatement query = connection.prepareStatement(sql);
-        query.setInt(1, price);
+        query.setDouble(1, price);
         query.setString(2, type);
         ResultSet result = query.executeQuery();
 
@@ -208,6 +212,7 @@ public class PropertyDAO {
             property.setDirectionFacing(result.getString(9));
             property.setPrice(result.getDouble(10));
             property.setDistrictId(result.getInt(11));
+            propertiesArrList.add(property);
         }                
         return propertiesArrList; 
     }   

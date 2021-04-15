@@ -3,29 +3,31 @@ package com.sanvalero.proweek.servlet;
 import com.sanvalero.proweek.dao.PropertyDAO;
 import com.sanvalero.proweek.domain.Property;
 import java.io.IOException;
-import static java.lang.System.out;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Servlet that obtains the properties listed in the database.
+ */
 @WebServlet(name = "proweek", urlPatterns = {"/search"})
-public class SearchPropertiesServlet extends HttpServlet {
+public class GetDistricts extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-               throws ServletException, IOException {
-        
-        String type = request.getParameter("tipo");
-        double price = Double.parseDouble(request.getParameter("precio"));
-        
+            throws ServletException, IOException {
+    
+        PrintWriter out = response.getWriter();
+        out.println("<h1>Listado de Barrios en Zaragoza</h1>");
         PropertyDAO propertyDAO = new PropertyDAO();
-       
         try {
-            ArrayList<Property> properties = new ArrayList<>();
-            properties = propertyDAO.searchPropertiesPriceType(price, type);
+            ArrayList<Property> properties = propertyDAO.getProperties();
             out.println("<ul>");
             for (Property property : properties) {
                 out.println("<li>" + property.getType() + "</li>");
@@ -36,9 +38,8 @@ public class SearchPropertiesServlet extends HttpServlet {
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-        }      
+        }        
     }
-    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
@@ -48,4 +49,5 @@ public class SearchPropertiesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
     }
+    
 }
