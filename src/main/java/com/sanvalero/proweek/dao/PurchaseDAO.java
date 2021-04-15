@@ -9,7 +9,6 @@ import java.sql.SQLException;
 
 import java.sql.Date;
 
-
 /**
  * Purchase establishes connection with the table COMPRAN in the database.
  * @author bathe
@@ -18,7 +17,7 @@ public class PurchaseDAO {
 
     private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     private final String URL_CONNECTION = "jdbc:oracle:thin:@//localhost:1521/XE";
-    private final String USER = "ProWeekHr";
+    private final String USER = "ProWeek";
     private final String PASSWORD = "1234";
     
     private Connection connection;
