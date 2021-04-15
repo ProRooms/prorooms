@@ -190,6 +190,13 @@ public class UserDAO {
         query.executeUpdate();
     }
     
+
+    /**
+     * Modifies the date of birth(DOB) of a registered user
+     * @param dob
+     * @param userId
+     * @throws SQLException
+     */
     public void modifyUserDOB(LocalDate dob, int userId) throws SQLException {
         String sql = "UPDATE USUARIO SET fe_nacimiento = ? WHERE id_usuario = ?";
         
