@@ -16,7 +16,8 @@ public class User {
     private String telephone;
     
     //constructor
-
+    public User() {}
+    
     public User(int userId, String name, String surname, LocalDate dob, String email, String telephone) {
         this.userId = userId;
         this.name = name;

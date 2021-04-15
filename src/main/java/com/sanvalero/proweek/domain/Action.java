@@ -16,7 +16,8 @@ public class Action {
     private int userId;
 
     //constructor
-
+    public Action() {}
+    
     public Action(int id, LocalDate startDate, int propertyId, int userId) {
         this.id = id;
         this.startDate = startDate;

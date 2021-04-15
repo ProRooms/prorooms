@@ -4,7 +4,9 @@ import com.sanvalero.proweek.domain.District;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * District DAO establishes connection with the table BARRIO in the database.
@@ -43,21 +45,27 @@ public class DistrictDAO {
             sqle.printStackTrace();
         }
     }
-    
+       
     /**
-     * Add the details of a district to the database.
-     * @param district
+     * Lists all districts on the database.
+     * @return a collection of districts
      * @throws SQLException 
      */
-    public void addDistrict(District district) throws SQLException {
-        String sql = "INSERT INTO BARRIO (id_barrio, nombre, distancia, zona) " +
-                "VALUES (?, ?, ?, ?)";
+    public ArrayList<District> getDistricts() throws SQLException {
+        String sql = "SELECT * FROM BARRIO";
 
         PreparedStatement query = connection.prepareStatement(sql);
-
-        query.setInt(1, district.getDistrictId());
-        query.setString(2, district.getDistrictName());
-        query.setDouble(3, district.getDistanceFromCentre());
-        query.setString(4, district.getZone());
+        ResultSet result = query.executeQuery();
+        
+        ArrayList<District> districtsArrList = new ArrayList<>();
+        
+        while (result.next()) {
+            District district = new District();
+            district.setDistrictId(result.getInt(1));
+            district.setDistrictName(result.getString(2));
+            district.setDistanceFromCentre(result.getDouble(3));
+            district.setZone(result.getString(4));            
+        }        
+        return districtsArrList;      
     }
 }

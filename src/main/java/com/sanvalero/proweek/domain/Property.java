@@ -21,6 +21,8 @@ public class Property {
     private int districtId;
     
     //constructor
+    
+    public Property() { }
 
     public Property(int propertyId, String type, String street, int size,
             int rooms, int bathrooms, int parkingSpaces, int storageUnits,

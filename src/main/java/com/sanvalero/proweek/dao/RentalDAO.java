@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import java.sql.Date;
 
@@ -63,30 +62,5 @@ public class RentalDAO {
         query.setInt(4, rental.getPropertyId());
         query.setInt(5, rental.getUserId());
         query.executeUpdate();
-    }
-    
-    /***TODO************************************************************************************************************/
-    /**
-     * Obtiene la lista de peliculas de la base de datos
-     * @return Una colección con las peliculas
-     */
-    public ArrayList<Rental> getAllMovies() throws SQLException {        
-        return new ArrayList<>();
-    }
-    
-    /**
-     * Elimina una película
-     * @param id El id de la pelicula a eliminar
-     */
-    public void removeMovie(int id) {
-        
-    }
-    
-    /**
-     * Modifica la información de una pelicula
-     * @param movie La película con la información a modificar
-     */
-    public void modifyMovie(Rental alquilan) {
-        
-    }
+    }   
 }
