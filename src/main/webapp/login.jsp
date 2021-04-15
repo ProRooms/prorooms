@@ -1,3 +1,6 @@
+<%@page import="com.sanvalero.proweek.domain.User"%>
+<%@page import="com.sanvalero.proweek.dao.UserDAO"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -53,8 +56,7 @@
                   <input type="text" placeholder="Introduce apellidos" name="apellidos" required>
                   <label for="email"><b>Email</b></label>
                   <input type="text" placeholder="Enter Email" name="email" required>
-                  <label for="fe_nacimiento"><b>Fecha de nacimiento</b></label>
-                  <input type="date" placeholder="Enter Email" name="email" required>
+
                   <label for="email"><b>Email</b></label>
                   <input type="text" placeholder="Enter Email" name="email" required>
                   <label for="telefono"><b>Teléfono</b></label>
@@ -75,5 +77,16 @@
                   </div>
                 </div>
             </form>
+            <%
+                String status = request.getParameter("status");
+                if (status == null)
+                     status = "";
+
+                if (status.equals("ok")) {
+                     out.println("<p style='color:green'>Registración con éxito</p>");
+                } else if (status.equals("error")) {
+                     out.println("<p style='color:red'>No se ha podido registrarte</p>");
+                }
+            %>
         </body>
 </html>
