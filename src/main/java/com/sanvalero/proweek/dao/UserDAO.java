@@ -57,15 +57,14 @@ public class UserDAO {
      * @throws SQLException 
      */
     public void addUser(User user) throws SQLException {
-        String sql = "INSERT INTO USUARIO (id_usuario, nombre, apellidos, fe_nacimiento, email, telefono) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO USUARIO (id_usuario, nombre, apellidos, email, telefono) " +
+                "VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement query = connection.prepareStatement(sql);
 
         query.setInt(1, user.getUserId());
         query.setString(2, user.getName());
         query.setString(3, user.getSurname());
-        query.setDate(4, Date.valueOf(user.getDob()));
         query.setString(5, user.getEmail());
         query.setString(5, user.getTelephone());
         query.executeUpdate();
@@ -91,9 +90,8 @@ public class UserDAO {
             user.setUserId(result.getInt(1));
             user.setName(result.getString(2));
             user.setSurname(result.getString(3));
-            user.setDob(result.getDate(4).toLocalDate());
-            user.setEmail(result.getString(5));
-            user.setTelephone(result.getString(6));
+            user.setEmail(result.getString(4));
+            user.setTelephone(result.getString(5));
             usersArrList.add(user);
         }
         
@@ -122,7 +120,6 @@ public class UserDAO {
             user.setUserId(result.getInt(1));
             user.setName(result.getString(2));
             user.setSurname(result.getString(3));
-            user.setDob(result.getDate(4).toLocalDate());
             user.setEmail(result.getString(5));
             user.setTelephone(result.getString(6));
             usersArrList.add(user);

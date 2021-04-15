@@ -1,7 +1,5 @@
 package com.sanvalero.proweek.domain;
 
-import java.time.LocalDate;
-
 /**
  * User class contains details of registered customers using the application.
  */
@@ -11,21 +9,19 @@ public class User {
     private int userId;
     private String name;
     private String surname;
-    private LocalDate dob;
     private String email;
     private String telephone;
     
-    //constructor
+    //constructors
     public User() {}
-    
-    public User(int userId, String name, String surname, LocalDate dob, String email, String telephone) {
-        this.userId = userId;
+
+    public User(String name, String surname, String email, String telephone) {
         this.name = name;
         this.surname = surname;
-        this.dob = dob;
         this.email = email;
         this.telephone = telephone;
-    }
+    }    
+    
     
     //getters and setters
 
@@ -51,14 +47,6 @@ public class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public LocalDate getDob() {
-        return dob;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
     }
 
     public String getEmail() {
