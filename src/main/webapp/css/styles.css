@@ -94,15 +94,25 @@ body {
 }
 .container {
 	display: block;
-	width: 65%;
+	width: 80%;
 	margin: 0px auto; 
 	padding: 0px 15px;
+}
+
+
+.producto { 
+	width: 80%;
+	max-width: 500px;
+	max-height: 250px;
+	overflow: hidden;
+	margin-bottom: 30px;
 }
 
 /* HEADER -------------------------------------------------------*/
 
 header { 
 	background: #ffffff;
+    height: 40px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding: 20px 0px 30px; /*Te añade 20px para arriba y para abajo y 0 para los lados*/
@@ -112,20 +122,23 @@ header {
 }
 
 header .logo {
-	margin-top: 5px;
+	
+	margin-bottom: 20px;
 }
 .capaLogo-lg {
-	width: 20%;
-	display: inline-block;   /* CUANDO PONEMOS WIDTH TENEMOS QUE PONER UN INLINE*/
+	width: 5%;
+	display: inline-block;   
 	float: left;
+	padding-bottom: 20px;
 }
 .capaLogo-sm { 
+	width: 5%;
 	display: none; 
 	float: left;
 }
 
 .menuPrincipal {
-	width: 65%;
+	width: 70%;
     display: block;
     float: left;
     padding-right: 20px;
@@ -228,8 +241,11 @@ header .logo {
 	}
 
 	.producto { 
-		width: 100% !important; 
-		height: 198px !important; 
+		width: 31%;
+		max-width: 305px;
+		height: 150px;
+		overflow: hidden;
+		margin-bottom: 30px;
 	}
 
 	.producto:last-child { 
@@ -264,4 +280,199 @@ header .logo {
     	font-size: 20px;
 	}
 
+}
+
+.text_wrapper {
+	float: left;
+	width: 60%;
+}
+
+.formulario {
+	float: right;
+	width: 30%;
+	display: block;
+}
+select {
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+}
+
+#cabecera { 
+	position: relative; 
+	height: 700px; 
+	overflow: hidden; 
+	background: url(../img/contacto-bg.png);
+}
+
+#cabecera img { 
+	filter: brightness(50%); 
+	width: 100%; 
+}
+
+.contenido { 
+	width: 100%;
+	display: inline-block; 
+	clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 53% 95%, 50% 100%, 47% 95%, 0 95%);
+	background: url(../img/set-up-pro.jpg) no-repeat;
+	background-size: cover;
+	height: 700px;
+}
+.contenido2 { 
+	width: 65%; 
+	position: absolute; 
+	left: 0; 
+	right: 0; 
+    top: 50px;
+	margin: auto; 
+	z-index: 300;
+	padding: 0px 15px;
+	text-align: center;
+}
+
+.contenido h1,
+.contenido2 h1,
+.contenido h2,
+.contenido2 h2,
+.contenido p,
+.contenido2 p { 
+	color: #ffffff; 
+}
+.contenido h1,
+.contenido2 h1{ 
+	font-size: 55px !important;
+}
+.contenido p,
+.contenido2 p { 
+	font-size: 25px !important;
+}
+
+
+/* SECCIÓN SERVICIOS -------------------------------------------------------*/
+
+.contenedor-flex{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.servicio { 
+	width: 24%;
+	margin-bottom: 40px;
+	min-width: 268px;
+	background: #ffffff; 
+	min-height: 342px; 
+	padding: 38px; 
+	-webkit-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.16);
+	-moz-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.16);
+	box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.16);
+}
+
+.servicio span.num {
+	font-family: 'Audiowide', cursive;
+	font-size: 50px;
+	color: #a77784;
+	margin-right: 40px;
+	display: inline-block;
+}
+.servicio .barraTitulo {
+	border-bottom: solid 2px #a77784;
+	width: 50%;
+	display: inline-block;
+}
+
+.servicio h3 { 
+	margin-bottom: 20px; 
+	text-transform: uppercase; 
+	font-size: 18px; 
+	letter-spacing: 2px;
+	color: #553f5a ;
+	margin-top: 32px;
+}
+
+p.servicio-text {
+    min-height: 132px;
+}
+
+.label-precio { 
+	margin-bottom: 0px; 
+}
+
+.precio { 
+	color: #da0a40; 
+	font-weight: 800; 
+	display: block;
+	font-size: 25px; 
+}
+
+
+/*******************************LOGIN***************************************************/
+/**form*/
+.containerform {box-sizing: border-box}
+
+/* Full-width input fields */
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.containerform {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
 }
