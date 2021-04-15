@@ -53,26 +53,26 @@
                   <p>Fill in the form to create an account</p>
                   <hr>             
                   <label for="nombre"><b>Name</b></label>
-                  <input type="text" placeholder="Introduce nombre" name="nombre" required>
+                  <input type="text" placeholder="Enter your name" name="nombre" required>
                   <label for="apellidos"><b>Surname</b></label>
-                  <input type="text" placeholder="Introduce apellidos" name="apellidos" required>
+                  <input type="text" placeholder="Enter your surname" name="apellidos" required>
                   <label for="email"><b>Email</b></label>
-                  <input type="text" placeholder="Enter Email" name="email" required>
+                  <input type="text" placeholder="Enter your email" name="email" required>
                   <label for="telefono"><b>Telephone</b></label>
                   <input type="phone" name="telefono" class="input_text" id="inputPhone"
-                    aria-describedby="PhoneHelp" placeholder="Introduce tu número de teléfono">
+                    aria-describedby="PhoneHelp" placeholder="Enter your telephone number">
               
                   <label for="psw"><b>Password</b></label>
                   <input type="password" placeholder="Enter Password" name="psw" required>
               
                   <label for="psw-repeat"><b>Re-enter your password</b></label>
-                  <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                  <input type="password" placeholder="Re-enter Password" name="psw-repeat" required>
               
                   <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Conditions</a>.</p>
               
                   <div class="clearfix">
                     <button type="button" class="cancelbtn">Cancel</button>
-                    <input type="submit" class="signupbtn" value ="enviar">
+                    <input type="submit" class="signupbtn" value ="Send">
                   </div>
                 </div>
             </form>
