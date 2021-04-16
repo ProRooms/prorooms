@@ -40,11 +40,11 @@
             <div class="menuPrincipal">
                 <ul>
                     <!-- ANCLAS EN EL MENU PRINCIPAL: van enlazadas a los ID de las secciones posteriores-->
-                    <li><a href="#cabecera" title="conócenos" alt="conócenos" class="scroll">Conócenos</a>
+                    <li><a href="#cabecera" title="conócenos" alt="conócenos" class="scroll">Know Us</a>
                     </li>
-                    <li><a href="#productos" title="productos" alt="productos" class="scroll">Productos</a>
+                    <li><a href="#productos" title="productos" alt="productos" class="scroll">Product</a>
                     </li>
-                    <li><a href="#contacto" title="privacidad" alt="privacidad">Política de privacidad</a>
+                    <li><a href="#contacto" title="privacidad" alt="privacidad">Privacy Policy</a>
                     </li>
                 </ul>
             </div>
