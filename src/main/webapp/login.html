@@ -1,7 +1,3 @@
-<%@page import="com.sanvalero.proweek.domain.User"%>
-<%@page import="com.sanvalero.proweek.dao.UserDAO"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -46,21 +42,24 @@
                     </div>
             </header>
             
-            <form action="login" style="border:1px solid #ccc" method="post">
-                
+            <form action="action_page.php" style="border:1px solid #ccc">
                 <div class="containerform">
                   <h1>Sign Up</h1>
                   <p>Fill in the form to create an account</p>
                   <hr>             
                   <label for="nombre"><b>Name</b></label>
-                  <input type="text" placeholder="Enter your name" name="nombre" required>
+                  <input type="text" placeholder="Introduce nombre" name="nombre" required>
                   <label for="apellidos"><b>Surname</b></label>
-                  <input type="text" placeholder="Enter your surname" name="apellidos" required>
+                  <input type="text" placeholder="Introduce apellidos" name="apellidos" required>
+                  <label for="email"><b>Email</b></label>
+                  <input type="text" placeholder="Enter your email" name="email" required>
+                  <label for="fe_nacimiento"><b>Date of Birth</b></label>
+                  <input type="date" placeholder="Enter your date of birth" name="dob" required>
                   <label for="email"><b>Email</b></label>
                   <input type="text" placeholder="Enter your email" name="email" required>
                   <label for="telefono"><b>Telephone</b></label>
                   <input type="phone" name="telefono" class="input_text" id="inputPhone"
-                    aria-describedby="PhoneHelp" placeholder="Enter your telephone number">
+                    aria-describedby="PhoneHelp" placeholder="Enter your telephone">
               
                   <label for="psw"><b>Password</b></label>
                   <input type="password" placeholder="Enter Password" name="psw" required>
@@ -72,7 +71,7 @@
               
                   <div class="clearfix">
                     <button type="button" class="cancelbtn">Cancel</button>
-                    <button type="submit" class="signupbtn">Send</button>
+                    <button type="submit" class="signupbtn">Sign Up</button>
                   </div>
                 </div>
             </form>

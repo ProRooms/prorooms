@@ -57,8 +57,8 @@ public class UserDAO {
      * @throws SQLException 
      */
     public void addUser(User user) throws SQLException {
-        String sql = "INSERT INTO USUARIO (NOMBRE, APELLIDOS, EMAIL, TELEFONO) " +
-                "VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO USUARIO (NOMBRE, APELLIDOS, EMAIL, TELEFONO, CONTRASENA) " +
+                "VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement query = connection.prepareStatement(sql);
 
@@ -66,6 +66,7 @@ public class UserDAO {
         query.setString(2, user.getSurname());
         query.setString(3, user.getEmail());
         query.setString(4, user.getTelephone());
+        query.setString(5, user.getPassword());
         query.executeUpdate();
     }
     
@@ -203,30 +204,30 @@ public class UserDAO {
     }
            
     /**
-     * Deletes a user from the database according to their user ID.
-     * @param user
+     * Deletes a user from the database according to the password entered if valid.
+     * @param password
      * @throws SQLException 
      */
-    public void deleteUser(User user) throws SQLException {
-        String sql = "DELETE FROM USUARIOS WHERE usuario_id = ?";
+    public void deleteUser(String password) throws SQLException {
+        String sql = "DELETE FROM USUARIOS WHERE contrasena = ?";
         
-        deleteUsersViewings(user.getUserId());
+        deleteUsersViewings(password);
         
         PreparedStatement query = connection.prepareStatement(sql);
-        query.setInt(1, user.getUserId());
+        query.setString(1, password);
         query.executeUpdate();       
     }
     
     /**
      * Invoked when deleting a user; deletes a user's viewings.
-     * @param userId
+     * @param password
      * @throws java.sql.SQLException
      */
-    public void deleteUsersViewings(int userId) throws SQLException {
-        String sql = "DELETE FROM VISITAN WHERE usuario_id = ?";
+    public void deleteUsersViewings(String password) throws SQLException {
+        String sql = "DELETE FROM VISITAN WHERE contrasena = ?";
         
         PreparedStatement query = connection.prepareStatement(sql);
-        query.setInt(1, userId);
+        query.setString(1, password);
         query.executeUpdate();
     }
 }

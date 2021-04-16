@@ -33,6 +33,7 @@ public class SearchPropertiesServlet extends HttpServlet {
                 out.println("<li>" + property.getRooms() + "</li>");
                 out.println("<li>" + property.getBathrooms() + "</li>");
                 out.println("<li>" + property.getPrice() + "</li>");
+                out.println("<br>");
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
