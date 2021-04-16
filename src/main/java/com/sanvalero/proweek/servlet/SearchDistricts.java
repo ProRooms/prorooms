@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet that obtains the properties listed in the database.
  */
-@WebServlet(name = "proweek", urlPatterns = {"/search"})
+@WebServlet(name = "searchD", urlPatterns = {"/searchD"})
 public class SearchDistricts extends HttpServlet{
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

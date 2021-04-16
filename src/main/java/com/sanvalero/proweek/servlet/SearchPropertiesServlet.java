@@ -3,6 +3,7 @@ package com.sanvalero.proweek.servlet;
 import com.sanvalero.proweek.dao.PropertyDAO;
 import com.sanvalero.proweek.domain.Property;
 import java.io.IOException;
+import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,19 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "proweek", urlPatterns = {"/search"})
+@WebServlet(name = "search", urlPatterns = {"/search"})
 public class SearchPropertiesServlet extends HttpServlet {
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
                throws ServletException, IOException {
         
         String type = request.getParameter("tipo");
         double price = Double.parseDouble(request.getParameter("precio"));
-        
+        PrintWriter out = response.getWriter();
+        out.println("<h1>List of properties from search</h1>");
         PropertyDAO propertyDAO = new PropertyDAO();
        
         try {
-            ArrayList<Property> properties = new ArrayList<>();
+            ArrayList<Property> properties = new ArrayList<>();           
             properties = propertyDAO.searchPropertiesPriceType(price, type);
             out.println("<ul>");
             for (Property property : properties) {

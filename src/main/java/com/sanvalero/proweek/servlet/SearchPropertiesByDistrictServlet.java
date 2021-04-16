@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "login", urlPatterns = {"/userportal"})
+@WebServlet(name = "userportal", urlPatterns = {"/userportal"})
 public class SearchPropertiesByDistrictServlet extends HttpServlet  {
     
         protected void processRequest(HttpServletRequest request, HttpServletResponse response)

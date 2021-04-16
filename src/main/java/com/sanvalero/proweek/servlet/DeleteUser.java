@@ -16,23 +16,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "login", urlPatterns = {"/userportal"})
+@WebServlet(name = "delete_user", urlPatterns = {"/delete_user"})
 public class DeleteUser extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {    
-        
+            throws ServletException, IOException {
+
         String password = request.getParameter("psw");
-        
+
         UserDAO userDAO = new UserDAO();
         try {
-            userDAO.deleteUser(password);            
+            userDAO.deleteUser(password);
             PrintWriter out = response.getWriter();
-            response.sendRedirect("login.jsp?status=ok");           
+            response.sendRedirect("userportal.jsp?status=ok");
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            response.sendRedirect("login.jsp?status=error");
-        }  
+            response.sendRedirect("userportal.jsp?status=error");
+        }
     }
-    
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req, resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req, resp);
+    }
 }

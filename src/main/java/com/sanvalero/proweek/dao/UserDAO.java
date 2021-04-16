@@ -209,9 +209,9 @@ public class UserDAO {
      * @throws SQLException 
      */
     public void deleteUser(String password) throws SQLException {
-        String sql = "DELETE FROM USUARIOS WHERE contrasena = ?";
+        String sql = "DELETE FROM USUARIO WHERE contrasena = ?";
         
-        deleteUsersViewings(password);
+        //deleteUsersViewings(password);
         
         PreparedStatement query = connection.prepareStatement(sql);
         query.setString(1, password);
@@ -223,11 +223,12 @@ public class UserDAO {
      * @param password
      * @throws java.sql.SQLException
      */
-    public void deleteUsersViewings(String password) throws SQLException {
+    /*public void deleteUsersViewings(String password) throws SQLException {
         String sql = "DELETE FROM VISITAN WHERE contrasena = ?";
+        
         
         PreparedStatement query = connection.prepareStatement(sql);
         query.setString(1, password);
         query.executeUpdate();
-    }
+    }*/
 }

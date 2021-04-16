@@ -196,16 +196,17 @@ public class PropertyDAO {
      * @throws SQLException 
      */
     public ArrayList<Property> searchPropertiesPriceType(double price, String type) throws SQLException {
-        //String sql = "SELECT * FROM CASA WHERE precio >= ? AND tipo = ?";
+        String sql = "SELECT * FROM CASA WHERE precio <= ? AND tipo = ?";
+        /*
         String sql = "SELECT * FROM "
                 + "(SELECT Q.*, ROWNUM RN "
                 + "FROM "
                 + "(SELECT * CASA "
-                + "WHERE precio >= ? AND tipo = ? "
+                + "WHERE precio <= ? AND tipo = ? "
                 + "ORDER BY precio) Q "
                 + "WHERE ROWNUM <= 10 "
                 + ") WHERE RN >= 1";        
-        
+        */
         
         PreparedStatement query = connection.prepareStatement(sql);
         query.setDouble(1, price);

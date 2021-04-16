@@ -76,7 +76,7 @@
             </form>
             
             <%
-                /*String status = request.getParameter("status");
+                String status = request.getParameter("status");
                 if (status == null)
                      status = "";
 
@@ -84,7 +84,7 @@
                      out.println("<p style='color:green'>Registration success!</p>");
                 } else if (status.equals("error")) {
                      out.println("<p style='color:red'>Unfortunately, we were unable to register you.  Please try again.</p>");
-                }*/
+                }
             %>
         </body>
 </html>
