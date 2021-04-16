@@ -52,7 +52,12 @@ public class PropertyDAO {
      * @throws SQLException 
      */
     public ArrayList<Property> getProperties() throws SQLException {
-        String sql = "SELECT * FROM CASA";
+        String sql = "SELECT * FROM "
+                + "(SELECT Q.*, ROWNUM RN "
+                + "FROM "
+                + "(SELECT * CASA "
+                + "ORDER BY precio) Q "
+                + ") WHERE RN >= 1";
         
         PreparedStatement query = connection.prepareStatement(sql);
         ResultSet result = query.executeQuery();

@@ -11,6 +11,7 @@ public class User {
     private String surname;
     private String email;
     private String telephone;
+    private String password;
     
     //constructors
     public User() {}
@@ -20,8 +21,16 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.telephone = telephone;
+    } 
+
+    public User(int userId, String name, String surname, String email, String telephone, String password) {
+        this.userId = userId;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.telephone = telephone;
+        this.password = password;
     }    
-    
     
     //getters and setters
 
@@ -65,4 +74,11 @@ public class User {
         this.telephone = telephone;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
