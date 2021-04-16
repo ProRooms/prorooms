@@ -57,6 +57,7 @@ public class PropertyDAO {
                 + "FROM "
                 + "(SELECT * CASA "
                 + "ORDER BY precio) Q "
+                + "WHERE ROWNUM <= 10 "
                 + ") WHERE RN >= 1";
         
         PreparedStatement query = connection.prepareStatement(sql);
@@ -90,7 +91,7 @@ public class PropertyDAO {
      */
     public ArrayList<Property> searchPropertiesType(String type) throws SQLException {
         String sql = "SELECT * FROM CASA WHERE tipo = ? ORDER BY precio";
-
+        
         PreparedStatement query = connection.prepareStatement(sql);
         query.setString(1, type);
         ResultSet result = query.executeQuery();
@@ -157,10 +158,10 @@ public class PropertyDAO {
      * @throws SQLException 
      */
     public ArrayList<Property> searchDistrict(String input) throws SQLException{
-        String sql = "SELECT * FROM CASA C"
+        String sql = "SELECT * FROM CASA C "
                 + "INNER JOIN BARRIO B "
                 + "ON C.ID_BARRIO = B.ID_BARRIO "
-                + "WHERE barrio %? ORDER BY precio";
+                + "WHERE barrio %? ORDER BY precio ";
         
         PreparedStatement query = connection.prepareStatement(sql);
         query.setString(1, input);
@@ -195,7 +196,16 @@ public class PropertyDAO {
      * @throws SQLException 
      */
     public ArrayList<Property> searchPropertiesPriceType(double price, String type) throws SQLException {
-        String sql = "SELECT * FROM CASA WHERE precio >= ? AND tipo = ?";
+        //String sql = "SELECT * FROM CASA WHERE precio >= ? AND tipo = ?";
+        String sql = "SELECT * FROM "
+                + "(SELECT Q.*, ROWNUM RN "
+                + "FROM "
+                + "(SELECT * CASA "
+                + "WHERE precio >= ? AND tipo = ? "
+                + "ORDER BY precio) Q "
+                + "WHERE ROWNUM <= 10 "
+                + ") WHERE RN >= 1";        
+        
         
         PreparedStatement query = connection.prepareStatement(sql);
         query.setDouble(1, price);

@@ -16,14 +16,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "login", urlPatterns = {"/login"})
+@WebServlet(name = "login", urlPatterns = {"/userportal"})
 public class DeleteUser extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    
+            throws ServletException, IOException {    
         
-        String password = request.getParameter("contrasena");
+        String password = request.getParameter("psw");
         
         UserDAO userDAO = new UserDAO();
         try {

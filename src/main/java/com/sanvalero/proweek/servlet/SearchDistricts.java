@@ -26,7 +26,7 @@ public class SearchDistricts extends HttpServlet{
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String input = request.getParameter("entrada");
+        String input = request.getParameter("barrio");
         
         
         DistrictDAO districtDAO = new DistrictDAO();
