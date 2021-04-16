@@ -72,7 +72,7 @@
               
                   <div class="clearfix">
                     <button type="button" class="cancelbtn">Cancel</button>
-                    <input type="submit" class="signupbtn" value ="enviar">
+                    <button type="submit" class="signupbtn">Send</button>
                   </div>
                 </div>
             </form>
