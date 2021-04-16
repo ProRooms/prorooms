@@ -52,7 +52,13 @@ public class DistrictDAO {
      * @throws SQLException 
      */
     public ArrayList<District> getDistricts() throws SQLException {
-        String sql = "SELECT * FROM BARRIO";
+        String sql = "SELECT * FROM "
+                + "(SELECT Q.*, ROWNUM RN "
+                + "FROM ("
+                + "SELECT * FROM BARRIO "
+                + "ORDER BY nombre) Q "
+                + "WHERE ROWNUM <=5 "
+                + ") WHERE RN >= 1";
 
         PreparedStatement query = connection.prepareStatement(sql);
         ResultSet result = query.executeQuery();
@@ -64,8 +70,32 @@ public class DistrictDAO {
             district.setDistrictId(result.getInt(1));
             district.setDistrictName(result.getString(2));
             district.setDistanceFromCentre(result.getDouble(3));
-            district.setZone(result.getString(4));            
+            district.setZone(result.getString(4));
+            districtsArrList.add(district);
+            districtsArrList.add(district);
         }        
         return districtsArrList;      
+    }
+    
+    public ArrayList<District> searchDistricts(String userSearch) throws SQLException {
+        String sql = "SELECT * FROM BARRIO WHERE nombre = ?";
+
+        PreparedStatement query = connection.prepareStatement(sql);        
+        query.setString(1, userSearch);
+        ResultSet result = query.executeQuery();
+        
+        ArrayList<District> districtsArrList = new ArrayList<>();
+        
+        while (result.next()) {
+            District district = new District();
+            district.setDistrictId(result.getInt(1));
+            district.setDistrictName(result.getString(2));
+            district.setDistanceFromCentre(result.getDouble(3));
+            district.setZone(result.getString(4));
+            districtsArrList.add(district);
+        }        
+        return districtsArrList;     
+                
+                
     }
 }

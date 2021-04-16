@@ -20,7 +20,7 @@ public class UserDAO {
     //declare instance variables
     private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     private final String URL_CONNECTION = "jdbc:oracle:thin:@//localhost:1521/XE";
-    private final String USER = "ProWeekHr";
+    private final String USER = "ProWeek";
     private final String PASSWORD = "1234";
     
 
@@ -57,17 +57,16 @@ public class UserDAO {
      * @throws SQLException 
      */
     public void addUser(User user) throws SQLException {
-        String sql = "INSERT INTO USUARIO (id_usuario, nombre, apellidos, fe_nacimiento, email, telefono) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO USUARIO (NOMBRE, APELLIDOS, EMAIL, TELEFONO, CONTRASENA) " +
+                "VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement query = connection.prepareStatement(sql);
 
-        query.setInt(1, user.getUserId());
-        query.setString(2, user.getName());
-        query.setString(3, user.getSurname());
-        query.setDate(4, Date.valueOf(user.getDob()));
-        query.setString(5, user.getEmail());
-        query.setString(5, user.getTelephone());
+        query.setString(1, user.getName());
+        query.setString(2, user.getSurname());
+        query.setString(3, user.getEmail());
+        query.setString(4, user.getTelephone());
+        query.setString(5, user.getPassword());
         query.executeUpdate();
     }
     
@@ -91,9 +90,8 @@ public class UserDAO {
             user.setUserId(result.getInt(1));
             user.setName(result.getString(2));
             user.setSurname(result.getString(3));
-            user.setDob(result.getDate(4).toLocalDate());
-            user.setEmail(result.getString(5));
-            user.setTelephone(result.getString(6));
+            user.setEmail(result.getString(4));
+            user.setTelephone(result.getString(5));
             usersArrList.add(user);
         }
         
@@ -122,7 +120,6 @@ public class UserDAO {
             user.setUserId(result.getInt(1));
             user.setName(result.getString(2));
             user.setSurname(result.getString(3));
-            user.setDob(result.getDate(4).toLocalDate());
             user.setEmail(result.getString(5));
             user.setTelephone(result.getString(6));
             usersArrList.add(user);
@@ -207,30 +204,30 @@ public class UserDAO {
     }
            
     /**
-     * Deletes a user from the database according to their user ID.
-     * @param user
+     * Deletes a user from the database according to the password entered if valid.
+     * @param password
      * @throws SQLException 
      */
-    public void deleteUser(User user) throws SQLException {
-        String sql = "DELETE FROM USUARIOS WHERE usuario_id = ?";
+    public void deleteUser(String password) throws SQLException {
+        String sql = "DELETE FROM USUARIOS WHERE contrasena = ?";
         
-        deleteUsersViewings(user.getUserId());
+        deleteUsersViewings(password);
         
         PreparedStatement query = connection.prepareStatement(sql);
-        query.setInt(1, user.getUserId());
+        query.setString(1, password);
         query.executeUpdate();       
     }
     
     /**
      * Invoked when deleting a user; deletes a user's viewings.
-     * @param userId
+     * @param password
      * @throws java.sql.SQLException
      */
-    public void deleteUsersViewings(int userId) throws SQLException {
-        String sql = "DELETE FROM VISITAN WHERE usuario_id = ?";
+    public void deleteUsersViewings(String password) throws SQLException {
+        String sql = "DELETE FROM VISITAN WHERE contrasena = ?";
         
         PreparedStatement query = connection.prepareStatement(sql);
-        query.setInt(1, userId);
+        query.setString(1, password);
         query.executeUpdate();
     }
 }

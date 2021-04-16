@@ -1,13 +1,16 @@
 package com.sanvalero.proweek.dao;
 
+import com.sanvalero.proweek.domain.Property;
 import com.sanvalero.proweek.domain.Viewing;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * Viewing DAO establishes connection to the table VISITAN in the database.
@@ -45,6 +48,27 @@ public class ViewingDAO {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
+    }
+    
+    public ArrayList<Viewing> getViewings(int userId)  throws SQLException {
+        String sql = "SELECT * FROM VISITAN WHERE id_usuario = ?";
+        
+        PreparedStatement query = connection.prepareStatement(sql);
+        query.setInt(1, userId);
+        ResultSet result = query.executeQuery();
+        
+        ArrayList<Viewing> viewingsArrList = new ArrayList<>();
+        while (result.next()) {
+            Viewing viewing = new Viewing();
+            viewing.setId(result.getInt(1));
+            viewing.setStartDate(result.getDate(2).toLocalDate());
+            viewing.setPropertyId(result.getInt(3));
+            viewing.setUserId(result.getInt(4));
+            viewingsArrList.add(viewing);
+        }                
+        return viewingsArrList;  
+       
+       
     }
 
     /**

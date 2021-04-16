@@ -1,8 +1,9 @@
 <%@page import="com.sanvalero.proweek.domain.User"%>
 <%@page import="com.sanvalero.proweek.dao.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
     <head>
         <meta charset="utf-8">
@@ -35,41 +36,37 @@
                     <div class="menuPrincipal">
                         <ul>
                             <!-- ANCLAS EN EL MENU PRINCIPAL: van enlazadas a los ID de las secciones posteriores-->
-                            <li><a href="#cabecera" title="conócenos" alt="conócenos" class="scroll">Conócenos</a>
+                            <li><a href="#cabecera" title="conócenos" alt="conócenos" class="scroll">Get to Know us</a>
                             </li>
-                            <li><a href="#productos" title="productos" alt="productos" class="scroll">Productos</a>
+                            <li><a href="#productos" title="productos" alt="productos" class="scroll">Products</a>
                             </li>
-                            <li><a href="#contacto" title="privacidad" alt="privacidad">Política de privacidad</a>
+                            <li><a href="#contacto" title="privacidad" alt="privacidad">Privacy Policy</a>
                             </li>
                         </ul>
                     </div>
             </header>
             
-            <form action="action_page.php" style="border:1px solid #ccc">
+            <form action="login" style="border:1px solid #ccc" method="post">
+                
                 <div class="containerform">
                   <h1>Sign Up</h1>
-                  <p>Rellena el formulario para crear una cuenta</p>
+                  <p>Fill in the form to create an account</p>
                   <hr>             
-                  <label for="nombre"><b>Nombre</b></label>
+                  <label for="nombre"><b>Name</b></label>
                   <input type="text" placeholder="Introduce nombre" name="nombre" required>
-                  <label for="apellidos"><b>Apellidos</b></label>
+                  <label for="apellidos"><b>Surname</b></label>
                   <input type="text" placeholder="Introduce apellidos" name="apellidos" required>
                   <label for="email"><b>Email</b></label>
                   <input type="text" placeholder="Enter Email" name="email" required>
-
-                  <label for="email"><b>Email</b></label>
-                  <input type="text" placeholder="Enter Email" name="email" required>
-                  <label for="telefono"><b>Teléfono</b></label>
+                  <label for="telefono"><b>Telephone</b></label>
                   <input type="phone" name="telefono" class="input_text" id="inputPhone"
-                    aria-describedby="PhoneHelp" placeholder="Introduce tu número de teléfono">
-              
+                    aria-describedby="PhoneHelp" placeholder="Enter your telephone">     
                   <label for="psw"><b>Password</b></label>
-                  <input type="password" placeholder="Enter Password" name="psw" required>
+                  <input type="password" placeholder="Enter Password" name="psw" required>            
+                  <label for="psw-repeat"><b>Re-enter your password</b></label>
+                  <input type="password" placeholder="Re-enter Password" name="psw-repeat" required>
               
-                  <label for="psw-repeat"><b>Repeat Password</b></label>
-                  <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-              
-                  <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+                  <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Conditions</a>.</p>
               
                   <div class="clearfix">
                     <button type="button" class="cancelbtn">Cancel</button>
@@ -77,16 +74,17 @@
                   </div>
                 </div>
             </form>
+            
             <%
-                String status = request.getParameter("status");
+                /*String status = request.getParameter("status");
                 if (status == null)
                      status = "";
 
                 if (status.equals("ok")) {
-                     out.println("<p style='color:green'>Registración con éxito</p>");
+                     out.println("<p style='color:green'>Registration success!</p>");
                 } else if (status.equals("error")) {
-                     out.println("<p style='color:red'>No se ha podido registrarte</p>");
-                }
+                     out.println("<p style='color:red'>Unfortunately, we were unable to register you.  Please try again.</p>");
+                }*/
             %>
         </body>
 </html>

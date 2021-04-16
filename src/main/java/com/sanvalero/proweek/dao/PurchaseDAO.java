@@ -8,8 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import java.sql.Date;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 /**
  * Purchase establishes connection with the table COMPRAN in the database.
@@ -18,7 +16,7 @@ import java.util.ArrayList;
 public class PurchaseDAO {
 
     private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private final String URL_CONNECTION = "jdbc:mysql://localhost:3306/proweek";
+    private final String URL_CONNECTION = "jdbc:oracle:thin:@//localhost:1521/XE";
     private final String USER = "ProWeek";
     private final String PASSWORD = "1234";
     
