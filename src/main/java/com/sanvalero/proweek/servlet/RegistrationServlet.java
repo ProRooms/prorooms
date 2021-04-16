@@ -26,6 +26,7 @@ public class RegistrationServlet extends HttpServlet{
         String surname = request.getParameter("apellidos");
         String email = request.getParameter("email");
         String telephone = request.getParameter("telefono");
+        String password = request.getParameter("psw");
         
         User user = new User(name, surname, email, telephone);
         UserDAO userDAO = new UserDAO();

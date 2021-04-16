@@ -52,7 +52,13 @@ public class DistrictDAO {
      * @throws SQLException 
      */
     public ArrayList<District> getDistricts() throws SQLException {
-        String sql = "SELECT * FROM BARRIO";
+        String sql = "SELECT * FROM "
+                + "(SELECT Q.*, ROWNUM RN "
+                + "FROM ("
+                + "SELECT * FROM BARRIO "
+                + "ORDER BY nombre) Q "
+                + "WHERE ROWNUM <=5 "
+                + ") WHERE RN >= 1";
 
         PreparedStatement query = connection.prepareStatement(sql);
         ResultSet result = query.executeQuery();
